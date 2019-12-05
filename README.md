@@ -1,6 +1,6 @@
 ### WSD: React Concurrent Mode
 
-[http://wsd-react-concurrent-mode.herokuapp.com/] http://wsd-react-concurrent-mode.herokuapp.com/
+[http://wsd-react-concurrent-mode.herokuapp.com/](http://wsd-react-concurrent-mode.herokuapp.com/)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
