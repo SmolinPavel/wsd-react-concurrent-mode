@@ -1,6 +1,6 @@
 ### WSD: React Concurrent Mode
 
-[https://github.com/SmolinPavel/wsd-react-concurrent-mode/blob/master/WSD.pdf](PDF version)
+https://github.com/SmolinPavel/wsd-react-concurrent-mode/blob/master/WSD.pdf
 
 [http://wsd-react-concurrent-mode.herokuapp.com/](http://wsd-react-concurrent-mode.herokuapp.com/)
 
