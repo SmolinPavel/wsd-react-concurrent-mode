@@ -1,7 +1,11 @@
-export function fetchProfileData(isSlow3G) {
+export function fetchProfileData({
+  isSlow3G,
+  userNameTimeout,
+  userFactsTimeout,
+}) {
   return (userId) => {
-    let userPromise = fetchUser(isSlow3G)(userId)
-    let postsPromise = fetchPosts(isSlow3G)(userId)
+    let userPromise = fetchUser({ isSlow3G, timeout: userNameTimeout })(userId)
+    let postsPromise = fetchPosts({ isSlow3G, timeout: userFactsTimeout })(userId)
     return {
       userId,
       user: wrapPromise(userPromise),
@@ -40,7 +44,7 @@ function wrapPromise(promise) {
   }
 }
 
-export function fetchUser(isSlow3G) {
+export function fetchUser({ isSlow3G, timeout }) {
   return (userId) => {
     return new Promise((resolve) => {
       setTimeout(
@@ -75,13 +79,13 @@ export function fetchUser(isSlow3G) {
               throw Error('Unknown user.')
           }
         },
-        isSlow3G ? 2000 : 200
+        isSlow3G ? timeout*8 : timeout
       )
     })
   }
 }
 
-export function fetchPosts(isSlow3G) {
+export function fetchPosts({ isSlow3G, timeout }) {
   return (userId) => {
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -171,7 +175,7 @@ export function fetchPosts(isSlow3G) {
           default:
             throw Error('Unknown user.')
         }
-      }, isSlow3G ? 10000 : 2000)
+      }, isSlow3G ? timeout*8 : timeout)
     })
   }
 }

@@ -5,7 +5,7 @@ import ProfileTimeline from './ProfileTimeline'
 
 function ProfilePage({ resource, shouldUseDeffered }) {
   const deferredResource = useDeferredValue(resource, {
-    timeoutMs: 3000,
+    timeoutMs: 5000,
   })
   return (
     <Suspense fallback={<h1>Loading profile...</h1>}>
@@ -13,7 +13,7 @@ function ProfilePage({ resource, shouldUseDeffered }) {
       <Suspense fallback={<h1>Loading posts...</h1>}>
         <ProfileTimeline
           resource={shouldUseDeffered ? deferredResource : resource}
-          isStale={deferredResource !== resource}
+          isStale={shouldUseDeffered ? deferredResource !== resource : false}
         />
       </Suspense>
     </Suspense>

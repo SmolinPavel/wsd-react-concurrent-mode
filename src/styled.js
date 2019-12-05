@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, keyframes } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   *,
@@ -40,13 +40,20 @@ export const Button = styled.button`
   outline: none;
   transtion: 0.2s;
 
-  &:hover {
-    transform: translateY(-1px);
-  }
-
   &:active {
-    transform: translateY(1px);
+    transform: translateY(2px);
   }
+`
+
+const animateDelay = keyframes`
+  to {
+    visibility: visible;
+  }
+`
+
+export const DelayedLoader = styled.span`
+  animation: 0s linear 0.5s forwards ${animateDelay};
+  visibility: hidden;
 `
 
 export const Header = styled.h1`
@@ -75,9 +82,28 @@ export const UnorderedListItem = styled.li`
 
 export const SettingsWrapper = styled.div`
   margin: 0 0 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
 
   label {
     cursor: pointer;
-    margin-right: 1.5rem;
+    margin: 1rem 1.5rem 1rem 0.5rem;
   }
+
+  span {
+    margin-left: 5px;
+  }
+`
+
+export const StyledTextField = styled.input.attrs({ type: 'number' })`
+  display: inline-block;
+  width: 5rem;
+  font-size: 1rem;
+  height: 1.5rem;
+  background: ${(props) => (props.checked ? 'salmon' : 'papayawhip')}
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  padding: 2px 4px;
+  transition: all 0.15s;
 `
